@@ -17,8 +17,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class UserService {
 
-    @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     // 프론트의 인가 코드를 통해 access_token 발급
     public OauthToken getAccessToken(String code) {
