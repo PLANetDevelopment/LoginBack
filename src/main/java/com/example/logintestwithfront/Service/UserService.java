@@ -30,7 +30,7 @@ public class UserService {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type", "authorization_code");
         params.add("client_id", "30e5410f7f73eeb781a471522f30d2a6");
-        params.add("redirect_uri", "http://localhost:8080/login/oauth2/code/kakao");
+        params.add("redirect_uri", "http://localhost:3000/oauth");
         params.add("code", code);
         params.add("client_secret", "fm0QlhjRTs8XDMaBjkECXApaTt65NWgV"); // 생략 가능
 
