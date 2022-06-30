@@ -12,8 +12,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter { // 추가적�
         http
                 .csrf().disable() // csrf 해제
                 .authorizeRequests() // HttpServletRequest를 사용하는 요청들에 대한 접근 제한 설정
-                .antMatchers("/oauth/token").permitAll() // "/oauth/token"에 대한 접근 권한은 인증 없이 접근 허용 -> CORS 문제 해결
-                .antMatchers("/api/*").permitAll() // "/oauth/token"에 대한 접근 권한은 인증 없이 접근 허용 -> CORS 문제 해결
+                .antMatchers("/oauth/token", "/api/**").permitAll() // "/oauth/token"에 대한 접근 권한은 인증 없이 접근 허용 -> CORS 문제 해결
                 .anyRequest().authenticated(); // 나머지 요청에 대해서는 인증을 받아야 한다.
     }
 }
