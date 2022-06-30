@@ -32,6 +32,14 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.0'
+
+//    jwt
+    implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
+    implementation 'com.auth0:java-jwt:3.14.0' // <--> jjwt
+
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5'
 }
 
 tasks.named('test') {
