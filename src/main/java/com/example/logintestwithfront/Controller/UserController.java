@@ -29,6 +29,10 @@ public class UserController {
         HttpHeaders headers = new HttpHeaders();
         headers.add(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + jwtToken);
 
+        // 사용자 아이디를 헤더의 userId 항목에 담아 넘긴다.
+        String userId = userService.getUserId(oauthToken.getAccess_token());
+        headers.add(JwtProperties.USER_ID, userId);
+
         // JWT가 담긴 헤더와 200 ok, "success"라는 body를 ResponseEntity에 담아 프론트에 전달
         return ResponseEntity.ok().headers(headers).body("success");
     }

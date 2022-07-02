@@ -46,8 +46,6 @@ public class UserService {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 
-        System.out.println("headers are " + headers);
-
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type", "authorization_code");
         params.add("client_id", "30e5410f7f73eeb781a471522f30d2a6");
@@ -82,8 +80,10 @@ public class UserService {
 
     public User saveUser(String token) {
 
+        // 토큰으로 카카오 프로필 가져오기
         KakaoProfile profile = findProfile(token);
 
+        // 회원가입 된 회원인지 찾기 (db에 이미 저장돼 있는지)
         User user = userRepository.findByKakaoEmail(profile.getKakao_account().getEmail());
 
         if(user == null) {
@@ -167,6 +167,14 @@ public class UserService {
                 .sign(Algorithm.HMAC512(JwtProperties.SECRET));
 
         return jwtToken;
+    }
+
+     // 사용자 아이디 리턴
+    public String getUserId(String token) {
+        // 토큰으로 카카오 프로필 가져오기
+        KakaoProfile profile = findProfile(token);
+        String userId = profile.getKakao_account().getEmail();
+        return userId;
     }
 
 }
