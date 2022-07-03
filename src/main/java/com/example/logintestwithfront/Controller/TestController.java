@@ -17,11 +17,10 @@ import java.util.Map;
 @RestController
 public class TestController {
 
+    // 사용자 ID 받아오기
     @GetMapping("/header")
-    public Map<String, Object> requestSomething(@RequestHeader Map<String, Object> requestHeader) {
-        System.out.println("Header is ======================================================");
-        System.out.println(requestHeader);
-        return requestHeader;
+    public void requestSomething2(@RequestHeader(JwtProperties.USER_ID) String value) {
+        System.out.println(value);
     }
 
 }
