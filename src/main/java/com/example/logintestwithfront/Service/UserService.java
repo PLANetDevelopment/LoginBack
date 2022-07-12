@@ -135,7 +135,7 @@ public class UserService {
         return kakaoProfile;
     }
 
-    public String saveUserAndGetToken(String token) { //(1)
+    public String saveUserAndGetToken(String token) {
         KakaoProfile profile = findProfile(token);
 
         User user = userRepository.findByKakaoEmail(profile.getKakao_account().getEmail());

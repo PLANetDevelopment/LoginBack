@@ -4,7 +4,6 @@ import com.example.logintestwithfront.JWT.JwtProperties;
 import com.example.logintestwithfront.Model.OauthToken;
 import com.example.logintestwithfront.Service.UserService;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -30,6 +29,7 @@ public class UserController {
         headers.add(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + jwtToken);
 
         String userId = userService.getUserId(oauthToken.getAccess_token());
+
         // 사용자 아이디를 헤더의 userId 항목에 담아 넘긴다.
 //        headers.add(JwtProperties.USER_ID, userId);
 
@@ -38,5 +38,4 @@ public class UserController {
 
         return userId;
     }
-
 }
